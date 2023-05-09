@@ -12,7 +12,7 @@ class Birthday(models.Model):
     )
     birthday = models.DateField('Дата рождения', validators=(real_age,))
     image = models.ImageField('Фото', upload_to='birthdays_images', blank=True)
-
+ 
     class Meta:
         verbose_name = 'День рождения'
         constraints = (
@@ -21,6 +21,9 @@ class Birthday(models.Model):
                 name='Unique person constraint',
             ),
         )
-
+    def get_absolute_url(self):
+        # С помощью функции reverse() возвращаем URL объекта.
+        return reverse('birthday:detail', kwargs={'pk': self.pk}) 
+    
     def __str__(self):
         return f'{self.last_name} {self.first_name} - {self.birthday}'
