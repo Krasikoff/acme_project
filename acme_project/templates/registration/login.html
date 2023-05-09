@@ -28,7 +28,7 @@
     </div>
     <div class="card-body">
       <!-- В атрибуте action указываем адрес, куда должен отправляться запрос. -->
-      <form method="post" action="{% url 'auth:login' %}">
+      <form method="post" action="{% url 'login' %}">
         {% csrf_token %}
         {% bootstrap_form form %}
         <!-- В скрытом поле передаём параметр next, 
@@ -38,7 +38,7 @@
       </form>
       <div>
         <!-- Ссылка для перехода на страницу восстановления пароля. -->
-        <a href="{% url 'auth:password_reset' %}">Забыли пароль?</a>
+        <a href="{% url 'password_reset' %}">Забыли пароль?</a>
       </div>
     </div>
   </div>
